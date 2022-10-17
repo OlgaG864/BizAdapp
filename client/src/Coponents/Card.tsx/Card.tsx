@@ -32,6 +32,12 @@ class Card extends React.Component<Props> {
           <div>Our address: {data.address}</div>
           <div>Phone number: {data.phone}</div>
         </div>
+        <div>
+          <button className="btn btn-primary">
+            <Link to="visit website" target="_blank" />
+            Visit Website
+          </button>
+        </div>
       </div>
     );
   }

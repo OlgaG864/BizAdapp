@@ -1,15 +1,24 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
+import About from "./Coponents/About/About";
 import Header from "./Coponents/Header/Header";
 
 import Menu from "./Coponents/Menu/Menu";
+import Services from "./Coponents/Services/Services";
 
 function App() {
   return (
     <>
       <Header></Header>
-      <Menu defaultDisplay="grid"></Menu>
+      <Routes>
+        <Route path="/" element={<Menu defaultDisplay="grid"></Menu>}></Route>
+        <Route path="about" element={<About />} />
+        <Route path="services" element={<Services />} />
+
+        <Route path="visit website" element={"http://google.com"} />
+      </Routes>
     </>
   );
 }

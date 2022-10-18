@@ -6,7 +6,7 @@ import About from "./Coponents/About/About";
 import Header from "./Coponents/Header/Header";
 
 import Menu from "./Coponents/Menu/Menu";
-import Services from "./Coponents/Services/Services";
+import Users from "./Coponents/Services/Users";
 
 function App() {
   return (
@@ -15,8 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Menu defaultDisplay="grid"></Menu>}></Route>
         <Route path="about" element={<About />} />
-        <Route path="services" element={<Services />} />
-
+        <Route path="services" element={<Users />} />
         <Route path="visit website" element={"http://google.com"} />
       </Routes>
     </>

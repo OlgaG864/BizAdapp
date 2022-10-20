@@ -28,7 +28,7 @@ class Users extends React.Component<{}, UsersState> {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/users")
+    fetch("http://localhost:3000/services")
       .then((res) => res.json())
       .then((json) => {
         this.setState(() => ({
@@ -38,7 +38,7 @@ class Users extends React.Component<{}, UsersState> {
   }
 
   addUser = (user: IUser) => {
-    fetch("http://localhost:3000/users", {
+    fetch("http://localhost:3000/services", {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ class Users extends React.Component<{}, UsersState> {
   };
 
   deleteUser = (id: string) => {
-    fetch("http://localhost:3000/users", {
+    fetch("http://localhost:3000/services", {
       method: "delete",
       headers: {
         "Content-Type": "application/json",

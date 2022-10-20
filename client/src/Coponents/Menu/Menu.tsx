@@ -13,6 +13,8 @@ interface MenuState {
   display: displayMode;
   cards: Array<CardType>;
   cardsDisplay: Array<Card>;
+  filteredByCategory: Array<CardType>;
+  selectedCategory: string;
 }
 
 class Menu extends React.Component<MenuProps, MenuState> {
@@ -23,6 +25,8 @@ class Menu extends React.Component<MenuProps, MenuState> {
       display: props.defaultDisplay,
       cards: [],
       cardsDisplay: [],
+      filteredByCategory: [],
+      selectedCategory: "",
     };
   }
 
@@ -41,6 +45,13 @@ class Menu extends React.Component<MenuProps, MenuState> {
     this.setState((state, props) => ({
       display: mode,
     }));
+  };
+
+  categoryChange = (selectedCategory: string) => {
+    const cards = [...this.state.cards];
+    const filteredByCategory = cards.filter((card) => {
+      return card.name === selectedCategory;
+    });
   };
 
   render() {

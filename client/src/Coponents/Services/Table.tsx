@@ -23,7 +23,6 @@ function Table(props: Props) {
             <td>
               <Status type={user.status} />
             </td>
-            <td>{user.email}</td>
             <td>
               <button
                 onClick={() => props.deleteUser(user._id)}

@@ -3,7 +3,7 @@ var router = express.Router();
 
 const services = require("../controllers/services");
 
-router.get("/services", services.getAll);
+router.get("/", services.getAll);
 router.post("/", services.add);
 router.delete("/", services.delete);
 

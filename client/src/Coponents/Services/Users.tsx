@@ -7,7 +7,6 @@ export type StatusType = "active" | "expired" | "banned";
 
 export interface IUser {
   fullName: string;
-  email: string;
   status: StatusType;
   _id?: string;
 }

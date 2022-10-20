@@ -7,6 +7,8 @@ interface MainProps {
 interface MainState {
   fullName: string;
   email: string;
+  selectedName: Array<string>;
+  selectedStatus: Array<string>;
 }
 
 class Main extends React.Component<MainProps, MainState> {
@@ -14,8 +16,10 @@ class Main extends React.Component<MainProps, MainState> {
     super(props);
 
     this.state = {
-      fullName: "",
-      email: "",
+      fullName: "email",
+      email: "active",
+      selectedName: ["email", "phone", "service"],
+      selectedStatus: ["active", "banned", "expired"],
     };
   }
 

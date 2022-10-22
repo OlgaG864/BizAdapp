@@ -2,6 +2,8 @@ import React from "react";
 import Card, { CardType } from "../Card.tsx/Card";
 import Title from "../Title/Title";
 import "./Menu.css";
+import { getRequest } from "../authService/apiService";
+import { getConfigFileParsingDiagnostics } from "typescript";
 
 type displayMode = "grid" | "list";
 
@@ -31,7 +33,12 @@ class Menu extends React.Component<MenuProps, MenuState> {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/cards")
+    const res = getRequest("cards/");
+    if (!res) {
+      return;
+    }
+
+    res
       .then((res) => res.json())
       .then((json) => {
         this.setState(() => ({

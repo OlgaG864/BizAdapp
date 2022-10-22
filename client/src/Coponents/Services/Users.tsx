@@ -1,4 +1,5 @@
 import React from "react";
+import { getRequest } from "../authService/apiService";
 import Main from "./Main";
 import Message from "./Message";
 import Table from "./Table";
@@ -27,7 +28,11 @@ class Users extends React.Component<{}, UsersState> {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3000/services")
+    const res = getRequest("services/");
+    if (!res) {
+      return;
+    }
+    res
       .then((res) => res.json())
       .then((json) => {
         this.setState(() => ({

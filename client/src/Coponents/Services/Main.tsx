@@ -8,7 +8,7 @@ interface MainState {
   fullName: string;
   email: string;
   selectedName: Array<string>;
-  selectedStatus: Array<string>;
+  status: Array<string>;
 }
 
 class Main extends React.Component<MainProps, MainState> {
@@ -19,7 +19,7 @@ class Main extends React.Component<MainProps, MainState> {
       fullName: "email",
       email: "active",
       selectedName: ["email", "phone", "service"],
-      selectedStatus: ["active", "banned", "expired"],
+      status: ["active", "banned", "expired"],
     };
   }
 
@@ -37,7 +37,7 @@ class Main extends React.Component<MainProps, MainState> {
     this.props.addUser({
       fullName: this.state.fullName,
       email: this.state.email,
-      status: "active",
+      status: this.state.status,
     });
 
     this.setState(() => ({

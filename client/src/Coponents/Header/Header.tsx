@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import Logout from "../auth/Logout";
 
 class Header extends React.Component {
   render() {
@@ -34,10 +35,8 @@ class Header extends React.Component {
                 Sign Up
               </NavLink>
             </li>
-            <li className="av-item me-3">
-              <NavLink to="/signup" className="nav-link">
-                Logout
-              </NavLink>
+            <li className="nav-item">
+              <Logout />
             </li>
           </ul>
         </div>

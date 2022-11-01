@@ -13,7 +13,7 @@ module.exports = {
 
   add: async function (req, res, next) {
     try {
-      const newUser = new Service(req.body); // todo: add validation
+      const newUser = new Service(req.body);
       const result = await newUser.save();
       res.json(result);
     } catch (err) {

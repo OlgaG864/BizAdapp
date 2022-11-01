@@ -3,7 +3,6 @@ import Card, { CardType } from "../Card.tsx/Card";
 import Title from "../Title/Title";
 import "./Menu.css";
 import { getRequest } from "../authService/apiService";
-import { getConfigFileParsingDiagnostics } from "typescript";
 
 type displayMode = "grid" | "list";
 
@@ -15,8 +14,7 @@ interface MenuState {
   display: displayMode;
   cards: Array<CardType>;
   cardsDisplay: Array<Card>;
-  filteredByCategory: Array<CardType>;
-  selectedCategory: string;
+  fullName: string;
 }
 
 class Menu extends React.Component<MenuProps, MenuState> {
@@ -27,8 +25,7 @@ class Menu extends React.Component<MenuProps, MenuState> {
       display: props.defaultDisplay,
       cards: [],
       cardsDisplay: [],
-      filteredByCategory: [],
-      selectedCategory: "",
+      fullName: "",
     };
   }
 
@@ -54,11 +51,18 @@ class Menu extends React.Component<MenuProps, MenuState> {
     }));
   };
 
-  categoryChange = (selectedCategory: string) => {
-    const cards = [...this.state.cards];
-    const filteredByCategory = cards.filter((card) => {
-      return card.name === selectedCategory;
+  handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    fieldName: string
+  ) => {
+    this.setState({
+      ...this.state,
+      [fieldName]: event.target.value,
     });
+
+    this.setState(() => ({
+      fullName: "",
+    }));
   };
 
   render() {
@@ -75,15 +79,17 @@ class Menu extends React.Component<MenuProps, MenuState> {
             <div className="d-flex justify-content-between px-5">
               <form className="d-flex" role="search ">
                 <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search for bussiness"
-                  aria-label="Search"
+                  value={this.state.fullName}
+                  onChange={(e) => this.handleInputChange(e, "fullName")}
+                  type="text"
+                  placeholder="search..."
+                  className="form-control"
                 />
                 <button className="btn btn-outline-success" type="submit">
                   <i className="bi bi-search"></i>
                 </button>
               </form>
+
               <div>
                 <div>
                   <button
@@ -105,9 +111,11 @@ class Menu extends React.Component<MenuProps, MenuState> {
         </nav>
 
         <div className={this.state.display}>
-          {this.state.cards.map((card) => (
-            <Card key={card._id} data={card}></Card>
-          ))}
+          {this.state.cards
+            .filter((card) => card.name.toLowerCase().includes(""))
+            .map((card) => (
+              <Card key={card._id} data={card}></Card>
+            ))}
         </div>
       </>
     );

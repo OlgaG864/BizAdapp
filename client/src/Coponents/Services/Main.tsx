@@ -37,7 +37,7 @@ class Main extends React.Component<MainProps, MainState> {
     this.props.addUser({
       fullName: this.state.fullName,
       email: this.state.email,
-      status: this.state.status,
+      status: "active",
     });
 
     this.setState(() => ({

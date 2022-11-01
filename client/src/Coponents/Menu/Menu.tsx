@@ -29,6 +29,19 @@ class Menu extends React.Component<MenuProps, MenuState> {
     };
   }
 
+  handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    fieldName: string
+  ) => {
+    this.setState({
+      ...this.state,
+      [fieldName]: event.target.value,
+    });
+    this.setState(() => ({
+      fullName: "",
+    }));
+  };
+
   componentDidMount() {
     const res = getRequest("cards/");
     if (!res) {
@@ -48,20 +61,6 @@ class Menu extends React.Component<MenuProps, MenuState> {
   changeDisplayMode = (mode: displayMode) => {
     this.setState((state, props) => ({
       display: mode,
-    }));
-  };
-
-  handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    fieldName: string
-  ) => {
-    this.setState({
-      ...this.state,
-      [fieldName]: event.target.value,
-    });
-
-    this.setState(() => ({
-      fullName: "",
     }));
   };
 
